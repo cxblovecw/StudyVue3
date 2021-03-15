@@ -21,6 +21,20 @@
         <component :is="Component"></component>
       </keep-alive>
     </router-view>
+    <br><br>
+    <div id="target"></div>
+    <UseTeleport></UseTeleport><br>
+    <UseSlot>
+      <!-- 不写v-solt:xxx 则默认是v-solt:default  可以缩写为 #default形式 -->
+      <div>默认插槽</div>
+      <template v-slot:namedSlot>
+        <div>具名插槽</div>
+      </template>
+      <!-- props为组件传递给插槽的属性 组件通过:绑定 -->
+      <template v-slot:scopedSlot="props">
+        <div>作用域插槽: {{props.data}}</div>
+      </template>
+    </UseSlot>
   </div>
 </template>
 
@@ -28,9 +42,11 @@
 import Home from './Home.vue';
 import Profile from './Profile.vue';
 import Cart from './Cart.vue';
+import UseTeleport from './UseTeleport.vue';
+import UseSlot from './UseSlot.vue';
 import { reactive } from 'vue';
 export default {
-  components:{Home,Profile,Cart},
+  components:{Home,Profile,Cart,UseTeleport,UseSlot},
   setup(){
     let keepAlivePages=reactive([])
     return {keepAlivePages}

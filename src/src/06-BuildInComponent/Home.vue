@@ -6,7 +6,7 @@
 <script>
 export default {
   name:"Home",
-  // 路由的后置守卫 根据to的不同 决定Home组件是否缓存 
+  // 路由的后置守卫 根据to的不同 决定 
   beforeRouteLeave (to, from, next) {
     if(to.path==='/cart'){
       if(!this.keepAlivePages.includes('Home')){
